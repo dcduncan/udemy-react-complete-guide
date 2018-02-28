@@ -60,6 +60,31 @@ class App extends Component {
             cursor: 'pointer'
         };
 
+        let people = null;
+        if (this.state.showPeople) {
+            people = (
+                <div>
+                    <Person
+                        name={this.state.people[0].name}
+                        age={this.state.people[0].age}
+                        clickHandler={this.switchNameHandler.bind(this, 'Courtney')}>
+                        {this.state.people[0].hobbies === undefined || this.state.people[0].hobbies.length === 0 ? '' : 'My Hobbies: ' + this.state.people[0].hobbies.join(',')}
+                    </Person>
+                    <Person
+                        name={this.state.people[1].name}
+                        age={this.state.people[1].age}
+                        changeHandler={this.nameChangeHandler}>
+                        {this.state.people[1].hobbies === undefined || this.state.people[1].hobbies.length === 0 ? '' : 'My Hobbies: ' + this.state.people[1].hobbies.join(', ')}
+                    </Person>
+                    <Person
+                        name={this.state.people[2].name}
+                        age={this.state.people[2].age}>
+                        {this.state.people[2].hobbies === undefined || this.state.people[2].hobbies.length === 0 ? '' : 'My Hobbies: ' + this.state.people[2].hobbies.join(', ')}
+                    </Person>
+                </div>
+            );
+        }
+
         return (
             <div className="App">
                 <h1>Hi, I'm a React App!</h1>
@@ -68,29 +93,7 @@ class App extends Component {
                     style={buttonStyle}>
                     Toggle Show People
                 </button>
-                {
-                    this.state.showPeople ?
-                        <div>
-                            <Person
-                                name={this.state.people[0].name}
-                                age={this.state.people[0].age}
-                                clickHandler={this.switchNameHandler.bind(this, 'Courtney')}>
-                                {this.state.people[0].hobbies === undefined || this.state.people[0].hobbies.length === 0 ? '' : 'My Hobbies: ' + this.state.people[0].hobbies.join(',')}
-                            </Person>
-                            <Person
-                                name={this.state.people[1].name}
-                                age={this.state.people[1].age}
-                                changeHandler={this.nameChangeHandler}>
-                                {this.state.people[1].hobbies === undefined || this.state.people[1].hobbies.length === 0 ? '' : 'My Hobbies: ' + this.state.people[1].hobbies.join(', ')}
-                            </Person>
-                            <Person
-                                name={this.state.people[2].name}
-                                age={this.state.people[2].age}>
-                                {this.state.people[2].hobbies === undefined || this.state.people[2].hobbies.length === 0 ? '' : 'My Hobbies: ' + this.state.people[2].hobbies.join(', ')}
-                            </Person>
-                        </div>
-                        : null
-                }
+                {people}
             </div>
         );
     }
