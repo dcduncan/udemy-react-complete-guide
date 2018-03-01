@@ -8,16 +8,19 @@ class App extends Component {
         people: [
             {
                 name: 'Max',
-                age: 28
+                age: 28,
+                id: 'jf3oi23jmr'
             },
             {
                 name: 'Manu',
                 age: 29,
+                id: 'fqwfaa3',
                 hobbies: ['racing']
             },
             {
                 name: 'DJ',
                 age: 25,
+                id: 'fj982elwekf',
                 hobbies: ['gaming', 'eating']
             },
         ],
@@ -69,7 +72,9 @@ class App extends Component {
                                 name={person.name}
                                 age={person.age}
                                 clickHandler={() => this.deletePersonHandler(index)}
-                                changeHandler={event => this.nameChangeHandler(event, index)}>
+                                changeHandler={event => this.nameChangeHandler(event, index)}
+                                key={person.id}
+                            >
                                 {hobbies}
                             </Person>
                         })
