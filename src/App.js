@@ -24,28 +24,23 @@ class App extends Component {
         showPeople: false
     };
 
-    switchNameHandler = (newName) => {
-        // DON'T DO THIS this.state.people[0].name = 'Stephanie'
-        const newPeople = [...this.state.people];
-        newPeople[0].name = 'Stephanie';
-        newPeople[1].name = newName;
-        newPeople[2].age = 100;
-        this.setState({
-            people: newPeople,
-        })
-    };
-
     togglePeopleHandler = () => {
         this.setState({
             showPeople: !this.state.showPeople
         })
     };
 
-    nameChangeHandler = (event) => {
+    deletePersonHandler = (index) => {
+        const people = this.state.people;
+        people.splice(index, 1);
+        this.setState({
+            people: people
+        })
+    };
+
+    nameChangeHandler = (event, index) => {
         const newPeople = [...this.state.people];
-        newPeople[0].name = 'Max';
-        newPeople[1].name = event.target.value;
-        newPeople[2].age = 25;
+        newPeople[index].name = event.target.value;
         this.setState({
             people: newPeople,
         })
@@ -65,7 +60,7 @@ class App extends Component {
             people = (
                 <div>
                     {
-                        this.state.people.map(person => {
+                        this.state.people.map((person, index) => {
                             let hobbies = 'I have no hobbies';
                             if (person.hobbies) {
                                 hobbies = 'My hobbies include: ' + person.hobbies.join(',')
@@ -73,8 +68,8 @@ class App extends Component {
                             return <Person
                                 name={person.name}
                                 age={person.age}
-                                clickHandler={this.switchNameHandler.bind(this, person.name.split('').reverse().join(''))}
-                                changeHandler={this.nameChangeHandler}>
+                                clickHandler={() => this.deletePersonHandler(index)}
+                                changeHandler={event => this.nameChangeHandler(event, index)}>
                                 {hobbies}
                             </Person>
                         })
