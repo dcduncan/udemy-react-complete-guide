@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Person from './Person/Person'
-import './App.css';
+import classes from './App.css';
 
 class App extends Component {
 
@@ -92,16 +92,16 @@ class App extends Component {
 
         const paragraphClasses = [];
         if (this.state.people.length < 3) {
-            paragraphClasses.push('red');
+            paragraphClasses.push(classes.red);
         }
 
         if (this.state.people.length < 2) {
-            paragraphClasses.push('bold');
+            paragraphClasses.push(classes.bold);
         }
 
 
         return (
-            <div className="App">
+            <div className={classes.App}>
                 <h1>Hi, I'm a React App!</h1>
                 <p className={paragraphClasses.join(' ')}>This is really working!</p>
                 <button
