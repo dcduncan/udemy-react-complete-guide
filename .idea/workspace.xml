@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="21d61815-00da-4ffa-879d-623f50ca741d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change beforePath="$PROJECT_DIR$/src/Person/Person.js" afterPath="$PROJECT_DIR$/src/Person/Person.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -251,7 +249,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15780000" />
+    <option name="totallyTimeSpent" value="15828000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1440" height="851" extended-state="6" />
