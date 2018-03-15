@@ -90,9 +90,20 @@ class App extends Component {
             buttonStyle.backgroundColor = 'red';
         }
 
+        const paragraphClasses = [];
+        if (this.state.people.length < 3) {
+            paragraphClasses.push('red');
+        }
+
+        if (this.state.people.length < 2) {
+            paragraphClasses.push('bold');
+        }
+
+
         return (
             <div className="App">
                 <h1>Hi, I'm a React App!</h1>
+                <p className={paragraphClasses.join(' ')}>This is really working!</p>
                 <button
                     onClick={this.togglePeopleHandler}
                     style={buttonStyle}>
