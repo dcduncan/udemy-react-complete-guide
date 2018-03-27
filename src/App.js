@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import Person from './Person/Person'
 import classes from './App.css';
 
@@ -67,14 +68,15 @@ class App extends Component {
                             if (person.hobbies) {
                                 hobbies = 'My hobbies include: ' + person.hobbies.join(',')
                             }
-                            return <Person
-                                name={person.name}
-                                age={person.age}
-                                clickHandler={() => this.deletePersonHandler(index)}
-                                changeHandler={event => this.nameChangeHandler(event, person.id)}
-                                key={person.id}>
-                                {hobbies}
-                            </Person>
+                            return <ErrorBoundary key={person.id}>
+                                <Person
+                                    name={person.name}
+                                    age={person.age}
+                                    clickHandler={() => this.deletePersonHandler(index)}
+                                    changeHandler={event => this.nameChangeHandler(event, person.id)}>
+                                    {hobbies}
+                                </Person>
+                            </ErrorBoundary>
                         })
                     }
                 </div>
