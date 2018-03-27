@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Person from '../components/People/Person/Person'
+import Cockpit from '../components/Cockpit/Cockpit'
+import People from '../components/People/People'
 import classes from './App.css';
 
 class App extends Component {
@@ -57,52 +58,24 @@ class App extends Component {
 
     render() {
         let people = null;
-        let buttonClass = '';
         if (this.state.showPeople) {
-            people = (
-                <div>
-                    {
-                        this.state.people.map((person, index) => {
-                            let hobbies = 'I have no hobbies';
-                            if (person.hobbies) {
-                                hobbies = 'My hobbies include: ' + person.hobbies.join(',')
-                            }
-                            return <Person
-                                name={person.name}
-                                age={person.age}
-                                clickHandler={() => this.deletePersonHandler(index)}
-                                changeHandler={event => this.nameChangeHandler(event, person.id)}
-                                key={person.id}>
-                                {hobbies}
-                            </Person>
-                        })
-                    }
-                </div>
-            );
+            people =
+                    <People
+                        people={this.state.people}
+                        clicked={this.deletePersonHandler}
+                        changed={this.nameChangeHandler}
+                    />;
 
-            buttonClass = classes.Red;
+
         }
-
-        const paragraphClasses = [];
-        if (this.state.people.length < 3) {
-            paragraphClasses.push(classes.red);
-        }
-
-        if (this.state.people.length < 2) {
-            paragraphClasses.push(classes.bold);
-        }
-
 
         return (
             <div className={classes.App}>
-                <h1>Hi, I'm a React App!</h1>
-                <p className={paragraphClasses.join(' ')}>This is really working!</p>
-                <button
-                    onClick={this.togglePeopleHandler}
-                    className={buttonClass}
-                    >
-                    Toggle Show People
-                </button>
+                <Cockpit
+                    people={this.state.people}
+                    buttonRed={this.state.showPeople}
+                    clicked={this.togglePeopleHandler}
+                />
                 {people}
             </div>
         );
