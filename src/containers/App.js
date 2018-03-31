@@ -5,28 +5,40 @@ import classes from './App.css';
 
 class App extends Component {
 
-    state = {
-        people: [
-            {
-                name: 'Max',
-                age: 28,
-                id: 'jf3oi23jmr'
-            },
-            {
-                name: 'Manu',
-                age: 29,
-                id: 'fqwfaa3',
-                hobbies: ['racing']
-            },
-            {
-                name: 'DJ',
-                age: 25,
-                id: 'fj982elwekf',
-                hobbies: ['gaming', 'eating']
-            },
-        ],
-        showPeople: false
-    };
+    constructor(props) {
+        super(props);
+        console.log('[App.js] inside constructor', props);
+        this.state = {
+            people: [
+                {
+                    name: 'Max',
+                    age: 28,
+                    id: 'jf3oi23jmr'
+                },
+                {
+                    name: 'Manu',
+                    age: 29,
+                    id: 'fqwfaa3',
+                    hobbies: ['racing']
+                },
+                {
+                    name: 'DJ',
+                    age: 25,
+                    id: 'fj982elwekf',
+                    hobbies: ['gaming', 'eating']
+                },
+            ],
+            showPeople: false
+        };
+    }
+
+    componentWillMount() {
+        console.log('[App.js] Inside componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('[App.js] Inside componentDidMount');
+    }
 
     togglePeopleHandler = () => {
         this.setState({
@@ -57,6 +69,7 @@ class App extends Component {
     };
 
     render() {
+        console.log('[App.js] Inside render');
         let people = null;
         if (this.state.showPeople) {
             people =
