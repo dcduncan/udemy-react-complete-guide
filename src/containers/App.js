@@ -40,6 +40,23 @@ class App extends Component {
         console.log('[App.js] Inside componentDidMount');
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log('Update [App.js] Inside componentWillReceiveProps', nextProps);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('Update [App.js] Inside shouldComponentUpdate', nextProps, nextState);
+        return true;
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log('Update [App.js] Inside componentWillUpdate', nextProps, nextState);
+    }
+
+    componentDidUpdate() {
+        console.log('Update [App.js] Inside componentDidUpdate', this.props, this.state);
+    }
+
     togglePeopleHandler = () => {
         this.setState({
             showPeople: !this.state.showPeople
