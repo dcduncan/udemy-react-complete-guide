@@ -16,6 +16,11 @@ class Person extends Component {
         console.log('[Person.js] Inside componentDidMount', this.props);
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('Update [Person.js] Inside shouldComponentUpdate', nextProps, nextState);
+        return this.props.name !== nextProps.name || this.props.age !==  nextProps.age || this.props.children !== nextProps.children;
+    }
+
     render() {
         console.log('[Person.js] Inside render', this.props);
         return (
