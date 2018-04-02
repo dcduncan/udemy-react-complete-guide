@@ -30,7 +30,8 @@ class App extends PureComponent {
                     hobbies: ['gaming', 'eating']
                 },
             ],
-            showPeople: false
+            showPeople: false,
+            toggleCount: 0
         };
     }
 
@@ -55,8 +56,11 @@ class App extends PureComponent {
     }
 
     togglePeopleHandler = () => {
-        this.setState({
-            showPeople: !this.state.showPeople
+        this.setState((previousState, props) => {
+            return {
+                showPeople: !this.state.showPeople,
+                toggleCount: previousState.toggleCount + 1
+            }
         })
     };
 
